@@ -35,18 +35,20 @@ A config file template can be found in:
 02_infos/grinder_simulations.conf
 ```
 
-It defines values for the following variables:
+### Create input files
 
-- numGroups
-- numSamplesPerGroup
-- numSpeciesPool
-- numSpeciesPerGroup
-- powerlawExponent
+- Fasta file with all the sequences needed
 
 ### Run
 
 ```
-./01_scripts/01_grinder_simulations.sh <PATH_TO_CONFIG_FILE> <NUM_CPUS>
+./grinder_simulations.sh <PATH_TO_CONFIG_FILE> <NUM_CPUS>
+```
+
+For examples:
+
+```
+./grinder_simulations.sh 02_infos/grinder_simulations.conf 10
 ```
 
 On a server with SLURM, you may need to do more, for example:
@@ -55,7 +57,7 @@ On a server with SLURM, you may need to do more, for example:
 NUM_CPUS=10
 module load grinder
 srun -c "$NUM_CPUS" --mem 1G --time 0-01:00 -J grinderSimul -o grinder_simul_%j.log \
-    ./01_scripts/01_grinder_simulations.sh 02_infos/grinder_simul.conf "$NUM_CPUS"
+    ./01_grinder_simulations.sh 02_infos/grinder_simulations.conf "$NUM_CPUS"
 ```
 
 ## Output
