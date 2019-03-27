@@ -1,3 +1,4 @@
 *.fasta
 *.pyc
 *~
+04_outputs/*

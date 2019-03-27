@@ -10,8 +10,10 @@ TAGS_fILE="03_inputs/tags.fasta"
 
 # Grinder Simulations parameters
 NUM_CPUS=10                 # Number of CPUs to use
-NUM_GROUPS=5                # Number of groups of samples
-NUM_SAMPLES_PER_GROUP=4     # Number of samples per group
-NUM_SPECIES_POOL=50         # Number of species sequences to choose from
-NUM_SPECIES_PER_GROUP=30    # Number of species to include in each sample
+NUM_GROUPS=2                # Number of groups of samples
+NUM_SAMPLES_PER_GROUP=2     # Number of samples per group
+NUM_SPECIES_POOL=50         # Total number of sequences to choose from
+NUM_SPECIES_PER_GROUP=40    # Number of to include in each group
+NUM_SPECIES_PER_SAMPLE=30   # Number of to include in each sample
+NUM_PERMUTATIONS=20         # Number of adjacent sequences to permutate
 POWERLAW_EXPONENT=1.0       # Exponent of power law sample abundancy distribution

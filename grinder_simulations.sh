@@ -9,19 +9,28 @@ TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 SCRIPT=$0
 SCRIPT_NAME=$(basename "$SCRIPT")
 CONFIG_FILENAME=$(basename "$CONFIG_FILE")
-LOG_FOLDER="99_logfiles/""$TIMESTAMP""_grinder_simulation"
-
-# Log all output
-mkdir "$LOG_FOLDER"
-exec > >(tee "$LOG_FOLDER"/"$TIMESTAMP"_grinder_simulation.log) 2>&1
-
-echo "Grinder Simulations v0.0.1"
-echo ""
 
 # Import config file and keep copy in 99_logfiles
 if [ -e "$CONFIG_FILE" -a -s "$CONFIG_FILE" ]
 then
+    # Source config file
     source "$CONFIG_FILE"
+
+    # Create output directory and subdirectories
+    OUTPUT_FOLDER="04_outputs/""$TIMESTAMP"_"$SIMULATION_NAME"
+    SEQUENCE_FOLDER="$OUTPUT_FOLDER"/01_sequences
+    SAMPLE_FOLDER="$OUTPUT_FOLDER"/02_simulated_samples
+    LOG_FOLDER="$OUTPUT_FOLDER"/99_logfiles
+    mkdir "$OUTPUT_FOLDER"
+    mkdir "$SEQUENCE_FOLDER"
+    mkdir "$SAMPLE_FOLDER"
+    mkdir "$LOG_FOLDER"
+
+    # Log all output
+    exec > >(tee "$LOG_FOLDER"/"$TIMESTAMP"_grinder_simulation.log) 2>&1
+
+    echo "Grinder Simulations v0.0.1"
+
     cp "$CONFIG_FILE" "$LOG_FOLDER"/"$TIMESTAMP"_"$CONFIG_FILENAME"
 
 else
@@ -53,13 +62,6 @@ else
     echo "    $TAGS_fILE"
     exit 1
 fi
-# Create log folder for current run with date and keep info about run
-## Full config, sequence, and tags files used
-## Global variables (if needed)
 
 # Run grinder
-echo "Num CPUs:     $NUM_CPUS"
-echo "Sequences:    $FASTA_FILE"
-echo "Tags:         $TAGS_fILE"
-
-./01_scripts/01_run_grinder.sh "$CONFIG_FILE" "$TIMESTAMP"
+./01_scripts/01_run_grinder.sh "$CONFIG_FILE" "$OUTPUT_FOLDER"
