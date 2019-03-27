@@ -1,6 +1,6 @@
 # Grinder Simulations
 
-Framework to create in silico eDNA samples
+Framework to create in silico eDNA metabarcoding experiments
 
 ## Description
 
@@ -10,8 +10,9 @@ simulated omic shotgun and amplicon sequence libraries.
 
 ## Objective
 
-The goal of this project is to create experiements with multiple samples at relative abundances that
-behave more like what is observed in real projects.
+The goal of this project is to create experiements with multiple samples at
+relative abundances that behave more like what is observed in real eDNA
+metabarcoding projects.
 
 ### Assumptions
 
@@ -27,14 +28,29 @@ behave more like what is observed in real projects.
 
 ## Running
 
-- Copy and fill config file
+### Copy and fill config file
 
-- Run
+A config file template can be found in:
+```
+02_infos/grinder_simulations.conf
+```
+
+It defines values for the following variables:
+
+- numGroups
+- numSamplesPerGroup
+- numSpeciesPool
+- numSpeciesPerGroup
+- powerlawExponent
+
+### Run
+
 ```
 ./01_scripts/01_grinder_simulations.sh <PATH_TO_CONFIG_FILE> <NUM_CPUS>
 ```
 
-- On a server with SLURM, you may need to do more, for example:
+On a server with SLURM, you may need to do more, for example:
+
 ```bash
 NUM_CPUS=10
 module load grinder
@@ -42,13 +58,10 @@ srun -c "$NUM_CPUS" --mem 1G --time 0-01:00 -J grinderSimul -o grinder_simul_%j.
     ./01_scripts/01_grinder_simulations.sh 02_infos/grinder_simul.conf "$NUM_CPUS"
 ```
 
-### Input variables
+## Output
 
-- numGroups
-- numSamplesPerGroup
-- numSpeciesPool
-- numSpeciesPerGroup
-- powerlawExponent
+- Folder with multiple samples with their names
+- Files describing each sample (species, abundances, errors, chimeras...)
 
 ## License
 
