@@ -11,12 +11,12 @@ TAGS_fILE="03_inputs/tags.fasta"
 # Grinder Simulations parameters
 NUM_CPUS=10                 # Number of CPUs to use (require that many from SLURM)
 
-NUM_GROUPS=5                # Number of groups of samples
+NUM_GROUPS=3                # Number of groups of samples
 NUM_SAMPLES_PER_GROUP=4     # Number of samples per group
 
 NUM_SEQUENCES=50000         # Number of sequences to generate per sample
-INSERT_DIST=70              # Insert length for paired-end library
-READ_LENGTHS=50             # Length of reads to generate
+INSERT_DIST=125              # Insert length for paired-end library
+READ_LENGTHS=100             # Length of reads to generate
 MUTATION_RATIO="98.2 1.8"   # Proportions of substitutions and indels (2 numbers)
 CHIMERA_PERCENT=1           # Percent of chimeras in output
 
