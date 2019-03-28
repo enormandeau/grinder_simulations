@@ -4,8 +4,8 @@ Framework to create in silico eDNA metabarcoding experiments
 
 ## Description
 
-Wrapper framework around the
-[Grinder](https://sourceforge.net/projects/biogrinder/) program that creates
+Wrapper framework around
+[Grinder](https://sourceforge.net/projects/biogrinder/), a program that creates
 simulated omic shotgun and amplicon sequence libraries.
 
 Developed by [Eric Normandeau](https://github.com/enormandeau) in [Louis
@@ -14,13 +14,14 @@ laboratory.
 
 ## Objective
 
-The goal of this project is to create experiements with multiple samples at
+The goal of this project is to create experiments with multiple samples at
 relative abundances that behave more like what is observed in real eDNA
 metabarcoding projects.
 
 ### Assumptions
 
-- Groups of samples share similair species and relative abundances
+- Groups of samples share similair species composition and relative abundances
+- Samples from a given group are more similar to other samples that same group
 - An experiment has a few of these groups of samples
 
 ## Dependencies
@@ -46,28 +47,32 @@ A config file template can be found in:
 ### Run
 
 ```
-./grinder_simulations.sh <PATH_TO_CONFIG_FILE> <NUM_CPUS>
+./grinder_simulations.sh <PATH_TO_CONFIG_FILE>
 ```
 
 For examples:
 
 ```
-./grinder_simulations.sh 02_infos/grinder_simulations.conf 10
+./grinder_simulations.sh 02_infos/grinder_simulations.conf
 ```
 
 On a server with SLURM, you may need to do more, for example:
 
 ```bash
-NUM_CPUS=10
 module load grinder
-srun -c "$NUM_CPUS" --mem 1G --time 0-01:00 -J grinderSimul -o grinder_simul_%j.log \
-    ./01_grinder_simulations.sh 02_infos/grinder_simulations.conf "$NUM_CPUS"
+srun -c 10 --mem 1G -J grinderSimul -o grinder_simul_%j.log \
+    ./01_grinder_simulations.sh 02_infos/grinder_simulations.conf
 ```
 
 ## Output
 
-- Folder with multiple samples with their names
-- Files describing each sample (species, abundances, errors, chimeras...)
+A project folder will be created in the output folder (`04_outputs`). Its name
+will start by the time of the run (`YYYYMMDD_HHMMSS_`) followed by the name of
+the run (example: `grinder_run_01`). This folder will contain three subfolders:
+
+- `01_samples_templates`: Fastq sequences used to generate each sample
+- `02_simulated_samples`: The simulate samples and info files
+- `03_logfiles`: Copies of files used for this run and reports
 
 ## License
 

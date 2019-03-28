@@ -9,7 +9,7 @@ FASTA_FILE="03_inputs/sequence_pool.fasta"
 TAGS_fILE="03_inputs/tags.fasta"
 
 # Grinder Simulations parameters
-NUM_CPUS=20                 # Number of CPUs to use (require that many from SLURM)
+NUM_CPUS=10                 # Number of CPUs to use (require that many from SLURM)
 
 NUM_GROUPS=5                # Number of groups of samples
 NUM_SAMPLES_PER_GROUP=4     # Number of samples per group

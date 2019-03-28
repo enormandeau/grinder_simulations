@@ -28,9 +28,7 @@ then
 
     # Log all output
     exec > >(tee "$LOG_FOLDER"/"$TIMESTAMP"_grinder_simulation.log) 2>&1
-
     echo "Grinder Simulations v0.0.1"
-
     cp "$CONFIG_FILE" "$LOG_FOLDER"/"$TIMESTAMP"_"$CONFIG_FILENAME"
 
 else
@@ -64,8 +62,4 @@ else
 fi
 
 # Run grinder
-# TODO Decide if each grinder is one SLURM job or if we launch
-# `module load grinder` and `srun -c 10 --mem 20G...` before manually
-# (probably better to have it done manually before, since users
-# on other kinds of systems can adapt more easily)
 ./01_scripts/01_run_grinder.sh "$CONFIG_FILE" "$OUTPUT_FOLDER"
