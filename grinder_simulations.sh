@@ -18,7 +18,7 @@ then
 
     # Create output directory and subdirectories
     OUTPUT_FOLDER="04_outputs/""$TIMESTAMP"_"$SIMULATION_NAME"
-    SEQUENCE_FOLDER="$OUTPUT_FOLDER"/01_sequences
+    SEQUENCE_FOLDER="$OUTPUT_FOLDER"/01_sample_templates
     SAMPLE_FOLDER="$OUTPUT_FOLDER"/02_simulated_samples
     LOG_FOLDER="$OUTPUT_FOLDER"/99_logfiles
     mkdir "$OUTPUT_FOLDER"

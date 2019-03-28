@@ -10,9 +10,9 @@ source "$CONFIG_FILE"
 NUM_SAMPLES=$[ $NUM_GROUPS * $NUM_SAMPLES_PER_GROUP ]
 echo "Creating $NUM_SAMPLES samples ($NUM_GROUPS groups with $NUM_SAMPLES_PER_GROUP samples)"
 
-# TODO Create sequence files for each sample
+# Create sequence files for each sample
 ./01_scripts/utility_scripts/create_sequences_for_each_sample.py \
-    "$FASTA_FILE" "$NUM_GROUPS" "$NUM_SAMPLES_PER_GROUP" "$OUTPUT_FOLDER"/02_simulated_samples
+    "$FASTA_FILE" "$NUM_GROUPS" "$NUM_SPECIES_PER_GROUP" "$NUM_SAMPLES_PER_GROUP" "$NUM_SPECIES_PER_SAMPLE" "$NUM_PERMUTATIONS" "$OUTPUT_FOLDER"/01_sample_templates
 
 # TODO Run Grinder for each sample
 
@@ -22,3 +22,5 @@ echo "Creating $NUM_SAMPLES samples ($NUM_GROUPS groups with $NUM_SAMPLES_PER_GR
 #    -dc '-' -md poly4 3e-3 3.3e-8 -mr 98.2 1.8 -hd Balzer -cp 1 -ck 0 -nl 12 \
 #    -mi tags.fasta \
 #    -di 30 -sp 90 -pp 90 -bn "$PROJECT" -od "$OUTPUT_FOLDER"
+
+# TODO Cleanup (gzip, rm)?
