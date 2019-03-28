@@ -5,6 +5,7 @@ sequence composition and abundancy
 Usage:
     <program>
         input_sequences
+        input_tags
         num_groups
         num_sequences_per_group
         num_sample_per_group
@@ -87,12 +88,13 @@ def fasta_iterator(input_file):
 # Parsing user input
 try:
     input_sequences = sys.argv[1]
-    num_groups = int(sys.argv[2])
-    num_sequences_per_group = int(sys.argv[3])
-    num_sample_per_group = int(sys.argv[4])
-    num_sequences_per_sample = int(sys.argv[5])
-    num_permutations = int(sys.argv[6])
-    output_directory = sys.argv[7]
+    input_tags = sys.argv[2]
+    num_groups = int(sys.argv[3])
+    num_sequences_per_group = int(sys.argv[4])
+    num_sample_per_group = int(sys.argv[5])
+    num_sequences_per_sample = int(sys.argv[6])
+    num_permutations = int(sys.argv[7])
+    output_directory = sys.argv[8]
 except:
     print(__doc__)
     sys.exit(1)
@@ -103,6 +105,10 @@ original_sequences = list(fasta_iterator(input_sequences))
 # Annotate sequences with ordered integers to reorder later
 original_sequences = list(zip(
     range(len(original_sequences)), original_sequences))
+
+# Load tags
+tag_sequences = list(fasta_iterator(input_tags))
+tag_number = 0
 
 # Create groups of similar samples
 for group in range(1, num_groups+1):
@@ -124,6 +130,8 @@ for group in range(1, num_groups+1):
     # Create samples
     for sample in range(1, num_sample_per_group+1):
         sample_number = f"{sample:02d}"
+        tag = tag_sequences[tag_number]
+        tag_number += 1
 
         # Pick n random sequences from the group ones
         sample_sequences = sorted(
@@ -135,11 +143,17 @@ for group in range(1, num_groups+1):
             swap_random_neighbors(sample_sequences)
 
         # write to file
-        file_path = path.join(output_directory,
+        sequence_file_path = path.join(output_directory,
                 f"group_{group_number}_sample_{sample_number}.fasta")
 
-        with open(file_path, "wt") as outfile:
+        tag_file_path = path.join(output_directory,
+                f"group_{group_number}_sample_{sample_number}.tag")
+
+        with open(sequence_file_path, "wt") as outfile:
             for s in sample_sequences:
 
                 # De annotate sequence and write
                 s[1].write_to_file(outfile)
+
+        with open(tag_file_path, "wt") as outfile:
+            tag.write_to_file(outfile)

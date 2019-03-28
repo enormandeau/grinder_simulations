@@ -4,6 +4,7 @@
 # Input parameters
 CONFIG_FILE="$1"
 INPUT_SEQUENCES="$2"
+TAG_SEQUENCE="${INPUT_SEQUENCES%.fasta}.tag"
 OUTPUT_FOLDER="$3"
 SAMPLE_NAME="$4"
 
@@ -22,7 +23,7 @@ srun -c 1 --mem 1G \
     -tr "$NUM_SEQUENCES" -am powerlaw "$POWERLAW_EXPONENT" \
     -id "$INSERT_DIST" -rd "$READ_LENGTHS" -fq 1 -ql 30 20 -mo FR \
     -dc '-' -md poly4 3e-3 3.3e-8 -mr "$MUTATION_RATIO" \
-    -hd Balzer -cp "$CHIMERA_PERCENT" -ck 0 -mi "$TAGS_fILE" \
+    -hd Balzer -cp "$CHIMERA_PERCENT" -ck 0 -mi "$TAG_SEQUENCE" \
     -bn "$SAMPLE_NAME" -od "$OUTPUT_FOLDER"
 
 # Compress output file
