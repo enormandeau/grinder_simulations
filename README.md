@@ -8,6 +8,10 @@ Wrapper framework around the
 [Grinder](https://sourceforge.net/projects/biogrinder/) program that creates
 simulated omic shotgun and amplicon sequence libraries.
 
+Developed by [Eric Normandeau](https://github.com/enormandeau) in [Louis
+Bernatchez](http://www.bio.ulaval.ca/louisbernatchez/presentation.htm)'s
+laboratory.
+
 ## Objective
 
 The goal of this project is to create experiements with multiple samples at
@@ -69,4 +73,4 @@ srun -c "$NUM_CPUS" --mem 1G --time 0-01:00 -J grinderSimul -o grinder_simul_%j.
 
 CC share-alike
 
-<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Grinder Simulations</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Eric Normandeau</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/enormandeau/grinder_simulations" rel="dct:source">https://github.com/enormandeau/grinder_simulations</a>.
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Grinder Simulations</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Eric Normandeau</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
