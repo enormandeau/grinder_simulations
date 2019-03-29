@@ -20,10 +20,14 @@ then
     OUTPUT_FOLDER="04_outputs/""$TIMESTAMP"_"$SIMULATION_NAME"
     SEQUENCE_FOLDER="$OUTPUT_FOLDER"/01_sample_templates
     SAMPLE_FOLDER="$OUTPUT_FOLDER"/02_simulated_samples
+    OUTPUT_OBITOOLS_FOLDER="$OUTPUT_FOLDER"/03_obitools_input
+    OUTPUT_BARQUE_FOLDER="$OUTPUT_FOLDER"/04_barque_input
     LOG_FOLDER="$OUTPUT_FOLDER"/99_logfiles
     mkdir "$OUTPUT_FOLDER"
     mkdir "$SEQUENCE_FOLDER"
     mkdir "$SAMPLE_FOLDER"
+    mkdir "$OUTPUT_OBITOOLS_FOLDER"
+    mkdir "$OUTPUT_BARQUE_FOLDER"
     mkdir "$LOG_FOLDER"
 
     # Log all output
@@ -63,3 +67,9 @@ fi
 
 # Run grinder
 ./01_scripts/01_run_grinder.sh "$CONFIG_FILE" "$OUTPUT_FOLDER"
+
+# Generate input files for Obitools
+./01_scripts/utility_scripts/grinder_to_obitools.py "$SAMPLE_FOLDER" "$OUTPUT_OBITOOLS_FOLDER"
+
+# Generate input files for Barque
+./01_scripts/utility_scripts/grinder_to_barque.py "$SAMPLE_FOLDER" "$OUTPUT_BARQUE_FOLDER" "$TAGS_LENGTH"

@@ -7,6 +7,7 @@ SIMULATION_NAME="grinder_run_01"    # Do not use spaces
 # Input files
 FASTA_FILE="03_inputs/sequence_pool.fasta"
 TAGS_fILE="03_inputs/tags.fasta"
+TAGS_LENGTH=8
 
 # Grinder Simulations parameters
 NUM_CPUS=10                 # Number of CPUs to use (require that many from SLURM)
