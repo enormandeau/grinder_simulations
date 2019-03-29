@@ -149,10 +149,10 @@ for group in range(1, num_groups+1):
 
         # Prepare output paths
         sequence_file_path = path.join(output_directory,
-                f"group_{group_number}_sample_{sample_number}.fasta")
+                f"g{group_number}s{sample_number}.fasta")
 
         tag_file_path = path.join(output_directory,
-                f"group_{group_number}_sample_{sample_number}.tag")
+                f"g{group_number}s{sample_number}.tag")
 
         # write sequence template to file
         with open(sequence_file_path, "wt") as outfile:
