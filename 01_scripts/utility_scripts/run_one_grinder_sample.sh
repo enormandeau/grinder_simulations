@@ -15,7 +15,7 @@ source "$CONFIG_FILE"
 grinder -rf "$INPUT_SEQUENCES" \
     -tr "$NUM_SEQUENCES" -am powerlaw "$POWERLAW_EXPONENT" \
     -id "$INSERT_DIST" -rd "$READ_LENGTHS" -fq 1 -ql 37 25 -mo FR \
-    -dc '-' -md poly4 3e-3 3.3e-8 -mr "$MUTATION_RATIO" \
+    -dc '-' -un 1 -md poly4 3e-3 3.3e-8 -mr "$MUTATION_RATIO" \
     -hd Balzer -cp "$CHIMERA_PERCENT" -ck 0 -mi "$TAG_SEQUENCE" \
     -bn "$SAMPLE_NAME" -od "$OUTPUT_FOLDER"
 
