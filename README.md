@@ -21,8 +21,8 @@ metabarcoding projects.
 ### Assumptions
 
 - Groups of samples share similair species composition and relative abundances
-- Samples from a given group are more similar to other samples that same group
-- An experiment has a few of these groups of samples
+- Samples from a given group are more similar to other samples of that same group
+- An experiment has one or more of these groups of samples
 
 ## Dependencies
 
@@ -72,7 +72,7 @@ the run (example: `grinder_run_01`). This folder will contain three subfolders:
 
 - `01_samples_templates`: Fastq sequences used to generate each sample
 - `02_simulated_samples`: The simulate samples and info files
-- `03_logfiles`: Copies of files used for this run and reports
+- `99_logfiles`: Copies of files used for this run and reports
 
 ## License
 

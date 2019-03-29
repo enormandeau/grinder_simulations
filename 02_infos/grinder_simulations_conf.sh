@@ -15,8 +15,8 @@ NUM_GROUPS=3                # Number of groups of samples
 NUM_SAMPLES_PER_GROUP=4     # Number of samples per group
 
 NUM_SEQUENCES=50000         # Number of sequences to generate per sample
-INSERT_DIST=125              # Insert length for paired-end library
-READ_LENGTHS=100             # Length of reads to generate
+INSERT_DIST=125             # Insert length for paired-end library
+READ_LENGTHS=100            # Length of reads to generate
 MUTATION_RATIO="98.2 1.8"   # Proportions of substitutions and indels (2 numbers)
 CHIMERA_PERCENT=1           # Percent of chimeras in output
 
