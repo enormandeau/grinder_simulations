@@ -89,13 +89,13 @@ for sample_file in samples:
     file_forward = myopen(
             os.path.join(
                 output_folder,
-                sample_file.replace("-reads.fastq.gz", "_R1.fastq.gz")),
+                sample_file.replace("-reads.fastq.gz", "_R1_001.fastq.gz")),
             mode="wt")
 
     file_reverse = myopen(
             os.path.join(
                 output_folder,
-                sample_file.replace("-reads.fastq.gz", "_R2.fastq.gz")),
+                sample_file.replace("-reads.fastq.gz", "_R2_001.fastq.gz")),
             mode="wt")
 
 
