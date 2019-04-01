@@ -40,9 +40,12 @@ A config file template can be found in:
 02_infos/grinder_simulations.conf
 ```
 
+You can edit this one in place or make yourself a copy and edit that copy.
+
 ### Create input files
 
-- Fasta file with all the sequences needed
+- Fasta file with all the species sequences by decreasing order of abundancy
+- Tags file with at least as many tags as the desired number of samples
 
 ### Run
 
@@ -72,6 +75,8 @@ the run (example: `grinder_run_01`). This folder will contain three subfolders:
 
 - `01_samples_templates`: Fastq sequences used to generate each sample
 - `02_simulated_samples`: The simulate samples and info files
+- `03_obitools_input`: Grinder output formatted for [obitools](https://git.metabarcoding.org/obitools/obitools/wikis/home)
+- `04_barque_input`: Grinder output formatted for [Barque](https://github.com/enormandeau/barque)
 - `99_logfiles`: Copies of files used for this run and reports
 
 ## License
