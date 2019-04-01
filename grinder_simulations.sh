@@ -32,7 +32,7 @@ then
 
     # Log all output
     exec > >(tee "$LOG_FOLDER"/"$TIMESTAMP"_grinder_simulation.log) 2>&1
-    echo "Grinder Simulations v0.0.1"
+    echo "Grinder Simulations v0.1.0"
     cp "$CONFIG_FILE" "$LOG_FOLDER"/"$TIMESTAMP"_"$CONFIG_FILENAME"
 
 else
@@ -46,7 +46,7 @@ then
     NUM_CPUS=1
 fi
 
-# Validate that the sequence and tags files exist
+# Validate that the sequence file exists
 if [ -e "$FASTA_FILE" ]
 then
     cp "$FASTA_FILE" "$LOG_FOLDER"/"$TIMESTAMP"_"$(basename $FASTA_FILE)"
@@ -56,6 +56,7 @@ else
     exit 1
 fi
 
+# Validate that the tags file exists
 if [ -e "$TAGS_fILE" ]
 then
     cp "$TAGS_fILE" "$LOG_FOLDER"/"$TIMESTAMP"_"$(basename $TAGS_fILE)"

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Create hierarchichaly similar groups samples in terms of
-sequence composition and abundancy
+"""Create hierarchichaly similar groups of samples in terms of
+species composition and relative abundancy
 
 Usage:
     <program>
@@ -46,7 +46,7 @@ def myopen(_file, mode="r"):
     else:
         return open(_file, mode=mode)
 
-def swap_random(seq):
+def swap_random_pair(seq):
     """Swap two random elements of a list
     """
     indexes = range(len(seq))
@@ -126,7 +126,7 @@ for group in range(1, num_groups+1):
     # Groups are more dissimilar
     # Do num_permutations random permutations and correct annotations
     for _ in range(num_permutations):
-        swap_random(group_sequences)
+        swap_random_pair(group_sequences)
 
     group_sequences = list(zip(
         range(len(group_sequences)),
