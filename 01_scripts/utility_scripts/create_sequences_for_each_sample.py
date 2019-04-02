@@ -143,8 +143,8 @@ for group in range(1, num_groups+1):
                 random.sample(group_sequences, num_sequences_per_sample))
 
         # Samples within groups are more similar
-        # Do num_permutations neighbor permutations
-        for _ in range(num_permutations):
+        # Do 2*num_permutations neighbor permutations
+        for _ in range(2*num_permutations):
             swap_random_neighbors(sample_sequences)
 
         # Prepare output paths
