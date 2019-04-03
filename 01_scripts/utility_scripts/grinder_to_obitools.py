@@ -66,7 +66,7 @@ except:
 
 # Find files to treat
 print("Preparing input files for Obitools")
-samples = [x for x in os.listdir(input_folder) if x.endswith("-reads.fastq.gz")]
+samples = sorted([x for x in os.listdir(input_folder) if x.endswith("-reads.fastq.gz")])
 
 # Write output
 for sample_file in samples:
