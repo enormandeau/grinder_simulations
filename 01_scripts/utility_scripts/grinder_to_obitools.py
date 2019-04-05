@@ -27,6 +27,21 @@ class Fastq(object):
         handle.write(self.name2 + "\n")
         handle.write(self.quality + "\n")
 
+    def complement(self):
+        s = []
+
+        corr = {
+                "A": "T",
+                "C": "G",
+                "G": "C",
+                "T": "A"
+                }
+
+        for n in self.sequence:
+            s.append(corr[n])
+
+        self.sequence = "".join(s)
+
     def __repr__(self):
         return self.name + " " + self.sequence[:31]
 
@@ -91,7 +106,14 @@ for sample_file in samples:
 
     # Iterate over sequences and write in forward and reverse files
     for seq in sequences:
-        output_path = file_forward if seq.name.strip().split(" ")[0].split("/")[1] == "1" else file_reverse
+
+        if seq.name.strip().split(" ")[0].split("/")[1] == "1":
+            output_path = file_forward
+
+        else:
+            output_path = file_reverse
+            seq.complement()
+
         seq.write_to_file(output_path)
 
     # Close R1 and R2 file handles
