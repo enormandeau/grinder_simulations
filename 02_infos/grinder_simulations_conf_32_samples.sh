@@ -2,7 +2,7 @@
 # Do not add spaces around the equal signs `=`
 
 # Simulation name
-SIMULATION_NAME="grinder_dataset"    # Do not use spaces
+SIMULATION_NAME="grinder_dataset_32_samples"    # Do not use spaces
 
 # Input files
 FASTA_FILE="03_inputs/sequence_pool.fasta"
